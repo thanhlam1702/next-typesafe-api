@@ -1,3 +1,70 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["perfectionist"],
+  "rules": {
+    "perfectionist/sort-named-imports": [
+      "warn",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+    "perfectionist/sort-exports": [
+      "warn",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+    "perfectionist/sort-named-exports": [
+      "warn",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+    "perfectionist/sort-imports": [
+      "warn",
+      {
+        "type": "line-length",
+        "order": "asc",
+        "groups": [
+          "react",
+          ["builtin", "external"],
+          "internal",
+          "constant",
+          "components",
+          "stores",
+          "lib",
+          "api",
+          ["parent", "sibling", "index"],
+          "side-effect",
+          "style",
+          "object",
+          "unknown",
+          ["type", "sibling-type", "parent-type", "index-type"],
+          "internal-type"
+        ],
+        "custom-groups": {
+          "value": {
+            "react": ["react", "react-*"],
+            "components": "_@/components/**",
+            "lib": "_@/lib/**",
+            "stores": "_@/stores/**",
+            "constant": "_@/constant/**",
+            "api": "_@/api-services/**"
+          }
+        },
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@next/next/no-img-element": "off"
+      }
+    }
+  ]
 }
